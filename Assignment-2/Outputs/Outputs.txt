@@ -1,0 +1,203 @@
+Qs. 1:- 
+
+node q1.js
+data.csv file created successfully.
+
+Qs. 2 :-
+node q2.js
+Name,Marks
+Koushik,85
+Roman,65
+Dean,75
+
+Qs. 3 :-
+node q3.js
+Server running at http://localhost:4000/
+
+Qs. 4 :-
+node q4.js
+Log updated successfully.
+
+Qs. 5 :-
+node q5.js
+JSON Server running at http://localhost:5000/
+
+Qs. 6 :-
+~/Desktop/FWDM Assignments/Assignment-2$ mongosh
+Current Mongosh Log ID: 69d3d2c165c051721344ba88
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.2
+Using MongoDB:          7.0.31
+Using Mongosh:          2.8.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-04-06T17:45:10.522+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-04-06T17:45:11.265+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use School
+switched to db School
+School> db.Student.insertOne({
+|   Name: "Koushik",
+|   age: 20,
+|   class: "6th Sem",
+|   marks: 85
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('69d3d2ea65c051721344ba89')
+}
+School> db.Student.insertMany([
+|  {Name:"Rahul",age:21,class:"6th",marks:75},
+|  {Name:"Anita",age:20,class:"6th",marks:92}
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69d3d30365c051721344ba8a'),
+    '1': ObjectId('69d3d30365c051721344ba8b')
+  }
+}
+School> db.Student.find()
+[
+  {
+    _id: ObjectId('69d3d2ea65c051721344ba89'),
+    Name: 'Koushik',
+    age: 20,
+    class: '6th Sem',
+    marks: 85
+  },
+  {
+    _id: ObjectId('69d3d30365c051721344ba8a'),
+    Name: 'Rahul',
+    age: 21,
+    class: '6th',
+    marks: 75
+  },
+  {
+    _id: ObjectId('69d3d30365c051721344ba8b'),
+    Name: 'Anita',
+    age: 20,
+    class: '6th',
+    marks: 92
+  }
+]
+School> db.Student.updateOne(
+|  {Name:"Rahul"},
+|  {$set:{marks:88}}
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+School> db.Student.deleteOne({Name:"Anita"})
+{ acknowledged: true, deletedCount: 1 }
+School> show dbs
+School  40.00 KiB
+Shop    40.00 KiB
+admin   40.00 KiB
+config  72.00 KiB
+local   96.00 KiB
+School> show collections 
+Student
+
+Qs. 7 :-
+~/Desktop/FWDM Assignments/Assignment-2$ mongosh
+Current Mongosh Log ID: 69d3d3aca88a31eb9f44ba88
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.2
+Using MongoDB:          7.0.31
+Using Mongosh:          2.8.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-04-06T17:45:10.522+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-04-06T17:45:11.265+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.product.insertOne({
+|  name:"Laptop",
+|  price:50000,
+|  category:"Electronics",
+|  stock:10
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('69d3d3bca88a31eb9f44ba89')
+}
+ecommerce> db.product.insertMany([
+|  {name:"Phone",price:20000,category:"Electronics",stock:15},
+|  {name:"Shoes",price:2000,category:"Fashion",stock:50}
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69d3d3c4a88a31eb9f44ba8a'),
+    '1': ObjectId('69d3d3c4a88a31eb9f44ba8b')
+  }
+}
+ecommerce> db.product.find()
+[
+  {
+    _id: ObjectId('69d3d3bca88a31eb9f44ba89'),
+    name: 'Laptop',
+    price: 50000,
+    category: 'Electronics',
+    stock: 10
+  },
+  {
+    _id: ObjectId('69d3d3c4a88a31eb9f44ba8a'),
+    name: 'Phone',
+    price: 20000,
+    category: 'Electronics',
+    stock: 15
+  },
+  {
+    _id: ObjectId('69d3d3c4a88a31eb9f44ba8b'),
+    name: 'Shoes',
+    price: 2000,
+    category: 'Fashion',
+    stock: 50
+  }
+]
+ecommerce> db.product.find({name:"Laptop"})
+[
+  {
+    _id: ObjectId('69d3d3bca88a31eb9f44ba89'),
+    name: 'Laptop',
+    price: 50000,
+    category: 'Electronics',
+    stock: 10
+  }
+]
+ecommerce> db.product.updateOne(
+|  {name:"Laptop"},
+|  {$set:{price:48000}}
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ecommerce> db.product.deleteOne({name:"Shoes"})
+{ acknowledged: true, deletedCount: 1 }
+ecommerce> show dbs
+School     72.00 KiB
+Shop       40.00 KiB
+admin      40.00 KiB
+config     72.00 KiB
+ecommerce  40.00 KiB
+local      96.00 KiB
+ecommerce> show collections
+product
+ecommerce> 
