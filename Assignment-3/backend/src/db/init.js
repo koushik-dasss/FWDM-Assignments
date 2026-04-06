@@ -13,5 +13,5 @@ async function initDatabase() {
         process.exit(1); // Stop the app if DB fails
     }
 }
-
 module.exports = initDatabase;
+initDatabase();
