@@ -1,20 +1,30 @@
+mongosh
+
 use School
+
 db.Student.insertOne({
   Name: "Koushik",
   age: 20,
   class: "6th Sem",
   marks: 85
 })
+
 db.Student.insertMany([
  {Name:"Rahul",age:21,class:"6th",marks:75},
  {Name:"Anita",age:20,class:"6th",marks:92}
 ])
+
 db.Student.find()
+
 db.Student.find({Name:"Koushik"})
+
 db.Student.updateOne(
  {Name:"Rahul"},
  {$set:{marks:88}}
 )
+
 db.Student.deleteOne({Name:"Anita"})
+
 show dbs
+
 show collections

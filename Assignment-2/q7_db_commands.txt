@@ -1,18 +1,30 @@
+mongosh 
+
 use ecommerce
+
 db.product.insertOne({
  name:"Laptop",
  price:50000,
  category:"Electronics",
  stock:10
 })
+
 db.product.insertMany([
  {name:"Phone",price:20000,category:"Electronics",stock:15},
  {name:"Shoes",price:2000,category:"Fashion",stock:50}
 ])
+
 db.product.find()
+
 db.product.find({name:"Laptop"})
+
 db.product.updateOne(
  {name:"Laptop"},
  {$set:{price:48000}}
 )
+
 db.product.deleteOne({name:"Shoes"})
+
+show dbs
+
+show collections
