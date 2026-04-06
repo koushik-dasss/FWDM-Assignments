@@ -14,4 +14,4 @@ async function initDatabase() {
     }
 }
 module.exports = initDatabase;
-initDatabase();
+// initDatabase(); // if DB initialized is to be verified , then only un comment this function call 
