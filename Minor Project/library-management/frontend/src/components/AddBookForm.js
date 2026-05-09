@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import api from "../api";
 import "../styles/Form.css";
 function AddBookForm() {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [pdf, setPdf] = useState(null);
+    const fileInputRef = useRef(null);
     const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -16,7 +17,8 @@ function AddBookForm() {
         alert("Book Added Successfully");
         setTitle("");
         setAuthor("");
-        setImage(null);
+        setPdf(null);
+        fileInputRef.current.value = "";
     }
     catch(error) {
         console.log(error);
@@ -42,6 +44,8 @@ return (
         />
         <input
           type="file"
+          accept=".pdf"
+          ref={fileInputRef}
           onChange={(e) => setPdf(e.target.files[0])}
         />
         <button type="submit">
