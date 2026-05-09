@@ -10,7 +10,9 @@ const { log } = require("node:console");
 // BOOK ADDITION 
 router.post("/", upload.single("pdf"), async (req, res) => {
     try {
-        const { title, author } = req.body;
+        console.log(req.body);
+        console.log(req.file);
+        const {title,author} = req.body;
         let book = await Book.findOne({ title: title });
         // IF BOOK EXISTS 
         if (book) {
